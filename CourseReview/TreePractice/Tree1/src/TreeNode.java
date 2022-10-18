@@ -8,7 +8,43 @@ public class TreeNode {
         this.data = data;
     }
 
+
+
+    /**min and max**/
+    public int min(){
+        if (this.leftChild != null){
+            return leftChild.min();
+        }
+        return this.data;
+    }
+
+    public int max(){
+        if (this.rightChild != null){
+            return this.rightChild.max();
+        }
+        return this.data;
+    }
+
     /**getters**/
+    public TreeNode get(int value){
+        if (this.data == value){
+           return this;
+        }
+
+        if (this.data < value){
+            if (this.leftChild != null){
+                return this.leftChild.get(value);
+            }
+        }
+
+        if (this.data > value){
+            if (this.rightChild != null){
+                return this.rightChild.get(value);
+            }
+        }
+        return null;
+    }
+
     public int getData(){
         return this.data;
     }
